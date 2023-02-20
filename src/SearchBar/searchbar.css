@@ -1,0 +1,25 @@
+.cus-com-search-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.cus-com-search-list {
+  background-color: whitesmoke;
+  box-shadow: rgb(136 136 136) 5px 10px 18px;
+  padding-left: 5px;
+}
+
+.cus-com-search-list li {
+  overflow: hidden;
+  list-style: none;
+  text-align: left;
+  height: 25px;
+  padding-left: 5px;
+}
+
+.cus-com-search-list li:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
