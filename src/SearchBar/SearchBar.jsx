@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./searchbar.css";
 
 export const SearchBar = (props) => {
   const { width, height, data } = props;
   const [tempKey, setTempKey] = useState([]);
   const [searchKey, setSearchKey] = useState("");
+  const searchInputRef = useRef(null);
+  useEffect(() => {
+    searchInputRef.current.addEventListener("search", () => handleClose());
+  }, []);
 
   const searchBoxStyle = {
     width: `${width}px`,
@@ -12,10 +16,7 @@ export const SearchBar = (props) => {
   };
 
   const listStyle = {
-    width: `${width}px`,
-    paddingLeft: "5px",
-    borderColor: "1px solid #6F7E8C",
-    borderRadius: "5px",
+    width: `${width - 5}px`,
   };
 
   const handleOnChange = (tempValue) => {
@@ -27,6 +28,10 @@ export const SearchBar = (props) => {
     setSearchKey(tempValue);
   };
 
+  const handleClose = () => {
+    setTempKey("");
+  };
+
   const handleClick = (selectedValue) => {
     setSearchKey(selectedValue);
     setTempKey("");
@@ -35,7 +40,9 @@ export const SearchBar = (props) => {
   return (
     <div className="cus-com-search-wrapper">
       <input
+        ref={searchInputRef}
         className="cus-com-search-box"
+        id="cus-com-search-box"
         role="searchbox"
         type={"search"}
         value={searchKey}
